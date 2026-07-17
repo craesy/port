@@ -209,8 +209,15 @@ function initStuffIveBuilt(root) {
               Keep texture visible
             </label>
           </div>
-          <p>A gutted camcorder rewired through circuit bending — hand-soldered switches and patch points glitch the video pickup into unpredictable, glitchy noise art.</p>
-        </div>
+          <p>Circuit bent camcorder. Interal flex cable passed through custom built signal splitter. Switches patched onto bend point giving the user 4 different toggles for crazy colour combination.</p>
+          <div class="videojs2">
+            <img src="/public/img/IMG_2503.PNG">
+          </div>
+          <div class="videojs2">
+            <img src="/public/img/IMG_2495.jpeg">
+            <img src="/public/img/IMG_2505.PNG">
+          </div>
+          </div>
 
         <div class="siv-tip-block" data-tip="obj5">
           <div class="tip-h-con">
@@ -1041,7 +1048,7 @@ function showTrashError() {
         <div class="win98-bubble">
             Hi, I've been resurrected from Windows 98!<br>
             It looks like you're trying to delete Zade's portfolio.<br>
-            Maybe like don't do thay?
+            Maybe like don't do that?
           </div>
             <img class="win98-clippy-img" src="/public/img/clippy.png" alt="Clippy">
           </div>
