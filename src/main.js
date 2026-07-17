@@ -215,7 +215,7 @@ function initStuffIveBuilt(root) {
           </div>
           <div class="videojs2">
             <img src="/public/img/IMG_2495.jpeg">
-            <img src="/public/img/IMG_2505.PNG">
+            <img src="/public/img/IMG_2505.jpg">
           </div>
           </div>
 
