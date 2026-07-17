@@ -1004,6 +1004,20 @@ p {
   justify-content: center;
 }
 
+.videojsimg {
+  display: flex;
+  justify-content: center;
+  max-width: 100vw;
+  position: relative;
+  padding: 6vh 0 0 0;
+}
+
+.videojsimg img {
+  width: 80%;
+  height: auto;
+  object-fit: contain;
+}
+
 .desktop-icon {
   position: fixed;
   width: 72px;
@@ -1725,11 +1739,13 @@ p {
   }
 
   .videojs1,
-  .videojs2 {
+  .videojs2,
+  .videojsimg {
     flex-direction: column;
     padding-top: 2vh;
   }
   .videojs1 video,
+  .videojsimg img,
   .videojs2 video,
   .videojs2 img {
     width: 100% !important;
