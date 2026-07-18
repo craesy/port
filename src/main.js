@@ -165,14 +165,14 @@ function initStuffIveBuilt(root) {
           </div>
           <p>Circuit bent 1980's video processor, mixing video and sync signals to provide iridescent and glitchy visuals. Audio signals also injected using a vactrol.</p>
           <div class="videojs1">
-            <video autoplay controls muted loop src="/public/videos/IMG_1525.mp4"></video>
+            <video autoplay controls muted loop src="/videos/IMG_1525.mp4"></video>
           </div>
           <div class="videojs2">
-            <img src="/public/img/IMG_1538.jpeg">
-            <video autoplay controls muted loop src="/public/videos/ProCameraVideoFile.mp4"></video>
+            <img src="/img/IMG_1538.jpeg">
+            <video autoplay controls muted loop src="/videos/ProCameraVideoFile.mp4"></video>
           </div>
           <div class="videojs1">
-            <img src="/public/img/IMG_0680.jpeg">
+            <img src="/img/IMG_0680.jpeg">
           </div>
         </div>
 
@@ -186,7 +186,7 @@ function initStuffIveBuilt(root) {
           </div>
           <p>CRT TV reworked as an oscilloscope. External audio injected to produce audio waveforms.</p>
           <div class="boilerroom-img-2">
-            <video autoplay controls muted loop src="/public/videos/CRTTVVid.mp4"></video>
+            <video autoplay controls muted loop src="/videos/CRTTVVid.mp4"></video>
           </div>        
         </div>
 
@@ -200,7 +200,7 @@ function initStuffIveBuilt(root) {
           </div>
           <p></p>
           <div class="boilerroom-img-2">
-            <video autoplay controls muted loop src="/public/videos/MicrosoftTeams-video.mp4"></video>
+            <video autoplay controls muted loop src="/videos/MicrosoftTeams-video.mp4"></video>
           </div>
         </div>
 
@@ -213,12 +213,12 @@ function initStuffIveBuilt(root) {
             </label>
           </div>
           <p>Circuit bent camcorder. Interal flex cable passed through custom built signal splitter. Switches patched onto bend point giving the user 4 different toggles for crazy colour combination.</p>
-          <div class="videojs2">
-            <img src="/public/img/IMG_2503.PNG">
+          <div class="videojsimg">
+            <img src="/img/IMG_2503.jpg">
           </div>
           <div class="videojs2">
-            <img src="/public/img/IMG_2495.jpeg">
-            <img src="/public/img/IMG_2505.jpg">
+            <img src="/img/IMG_2495.jpeg">
+            <img src="/img/IMG_2505.PNG">
           </div>
           </div>
 
@@ -995,8 +995,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let projectsOpened = false;
   let currentPath = ROOT_PATH;
   let launchInitiated = false;
-  let typeAboutBlock = null;   // we'll assign this later
-  let openTerminalAppMobile = null;   // set by setupMobileHomeScreen() on phones
+  let typeAboutBlock = null;   
+  let openTerminalAppMobile = null;   
 
 
   function cdToProjects(onDone) {
@@ -1020,7 +1020,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     logCommand("$ cd ..", currentPath, () => {
       currentPath = ROOT_PATH;
-      printLogPrompt(currentPath);   // 👈 new prompt after cd
+      printLogPrompt(currentPath);   
       if (onDone) onDone();
     });
   }
@@ -1053,7 +1053,7 @@ function showTrashError() {
             It looks like you're trying to delete Zade's portfolio.<br>
             Maybe like don't do that?
           </div>
-            <img class="win98-clippy-img" src="/public/img/clippy.png" alt="Clippy">
+            <img class="win98-clippy-img" src="/img/clippy.png" alt="Clippy">
           </div>
             <div class="win98-actions">
               <button class="win98-btn win98-ok">OK</button>
@@ -1512,7 +1512,7 @@ function renderDirectoryListingLeft(files) {
     if (existing) closeWindowWithAnimation(existing);
   }
 
-const MACOS_BAR_HEIGHT = 32; // matches your .macos-bar height
+const MACOS_BAR_HEIGHT = 32; 
 
 function makeDraggable(win) {
   const contentWindow = isContentWindow(win);
@@ -1697,7 +1697,7 @@ function onUp() {
       // (otherwise adding the class immediately after display change can be ignored)
       void win.offsetWidth;
 
-      win.classList.add("mac-open");  // 🔥 trigger mac-style animation
+      win.classList.add("mac-open");  
       makeDraggable(win);
       bringToFront(win);
 
@@ -1988,22 +1988,32 @@ function onUp() {
     appIcon.addEventListener("pointercancel", endPress);
   }
 
-  if (appIcon) {
-    if (IS_MOBILE) {
-      setupMobileHomeScreen();
-    } else {
-      makeIconDraggable(appIcon);                       // free-drag desktop icon
-      appIcon.addEventListener("dblclick", launchApp);  // mac-style launch
-    }
+let iconWasDragged = false;
+
+if (appIcon) {
+  if (IS_MOBILE) {
+    setupMobileHomeScreen();
   } else {
-    // Fallback behaviour if icon doesn't exist (dev mode)
-    typeBlock(0);
-    if (typeof typeAboutBlock === "function") {
-      setTimeout(() => typeAboutBlock(0), 300);
-    }
-    document.querySelectorAll(".terminal-window").forEach((win) => {
-      makeDraggable(win);
+    makeIconDraggable(appIcon);
+
+    appIcon.addEventListener("click", (e) => {
+      if (iconWasDragged) {
+        e.preventDefault();
+        e.stopPropagation();
+        return;
+      }
+
+      launchApp();
     });
   }
+} else {
+  typeBlock(0);
+  if (typeof typeAboutBlock === "function") {
+    setTimeout(() => typeAboutBlock(0), 300);
+  }
+  document.querySelectorAll(".terminal-window").forEach((win) => {
+    makeDraggable(win);
+  });
+}
 
 });
