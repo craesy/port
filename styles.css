@@ -1602,6 +1602,10 @@ p {
     transform: none !important;
     display: flex !important;        /* always laid out inside the app */
   }
+  /* top pane (links) gets 2/3 of the space, bottom pane (about me) gets 1/3 */
+  #ios-terminal-app .terminal-window-left { flex: 2 1 0; }
+  #ios-terminal-app .side-terminal-top { flex: 1 1 0; }
+
   /* divider between the two panes */
   #ios-terminal-app .side-terminal-top {
     border-top: 2px solid #2a2a2a !important;
@@ -1654,6 +1658,25 @@ p {
     height: auto !important;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+  }
+
+  /* taller header + bigger tap target on the close button, so it's easy to hit */
+  .window .window-header,
+  .window-textedit .window-header,
+  .window-mp4 .window-header,
+  .window-md .window-header,
+  .window-pdf .window-header {
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+  }
+  .window .window-close,
+  .window-textedit .window-close,
+  .window-mp4 .window-close,
+  .window-md .window-close,
+  .window-pdf .window-close {
+    font-size: 1.3rem !important;
+    padding: 10px !important;
+    margin: -10px -6px -10px 0 !important;
   }
 
   .window img,

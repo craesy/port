@@ -10,6 +10,17 @@ const IS_MOBILE =
   window.matchMedia("(max-width: 768px)").matches ||
   window.matchMedia("(hover: none) and (pointer: coarse)").matches;
 
+// Videos are marked autoplay for desktop hover previews; on mobile that
+// means every popup blasts sound/motion the moment it opens, so strip it.
+function disableAutoplayOnMobile(container) {
+  if (!IS_MOBILE) return;
+  container.querySelectorAll("video[autoplay]").forEach((v) => {
+    v.removeAttribute("autoplay");
+    v.pause();
+    v.currentTime = 0;
+  });
+}
+
 /* =========================================================
    Terminal + Popup Logic
    ========================================================= */
@@ -260,6 +271,7 @@ function initStuffIveBuilt(root) {
     </div>
   `;
   root.appendChild(tooltip);
+  disableAutoplayOnMobile(tooltip);
 
   const tipClose = tooltip.querySelector("#siv-tip-close");
   const tipBlocks = tooltip.querySelectorAll(".siv-tip-block");
@@ -1466,6 +1478,7 @@ function renderDirectoryListingLeft(files) {
   `;
 
   document.body.appendChild(win);
+  disableAutoplayOnMobile(win);
   document.body.classList.add("modal-open");
   makeDraggable(win);      // handles initial z-index + drag rules
 
