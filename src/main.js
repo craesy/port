@@ -270,6 +270,22 @@ function initStuffIveBuilt(root) {
             <img src="/smart-connect/wrist.jpg">
           </div>
         </div>
+        <div class="siv-tip-block" data-tip="obj7">
+          <div class="tip-h-con">
+            <h1>chopstickprototype_V1</h1>
+            <label>
+              <input type="checkbox" id="keep-texture-chk-7" />
+              Keep texture visible
+            </label>
+          </div>
+          <p>Rapid prototype for scrollable chopstick, testing feasablity and technical path.</p>
+          <div class="videojsimg">
+            <img src="/img/IMG_0809.jpeg"
+          </div>
+          <div class="videojs2">
+
+          </div>
+        </div>
       </div>
     </div>
   `;
@@ -284,6 +300,7 @@ function initStuffIveBuilt(root) {
   const chk4 = tooltip.querySelector("#keep-texture-chk-4");
   const chk5 = tooltip.querySelector("#keep-texture-chk-5");
   const chk6 = tooltip.querySelector("#keep-texture-chk-6");
+  const chk7 = tooltip.querySelector("#keep-texture-chk-7");
 
   // connectors SVG
   const svgNS = "http://www.w3.org/2000/svg";
@@ -442,6 +459,15 @@ function initStuffIveBuilt(root) {
     },
     {
       type: "gltf",
+      name: "Bibigo Chopstick",
+      url: "/models/chopstickv1.glb",
+      scale: 2,
+      position: { x: -0.475, y: 1.55, z: -0.35 },
+      orientation: { x: 0.04, y: -0.2, z: 0 },
+      tooltipClass: "obj7",
+    },
+    {
+      type: "gltf",
       name: "Mixer",
       url: "/models/Mixer.glb",
       scale: 1.75,
@@ -518,6 +544,7 @@ function initStuffIveBuilt(root) {
     obj4: chk4,
     obj5: chk5,
     obj6: chk6,
+    obj7: chk7,
   };
 
   function showTooltipContent(tooltipKey) {
