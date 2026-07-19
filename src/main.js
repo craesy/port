@@ -280,7 +280,23 @@ function initStuffIveBuilt(root) {
           </div>
           <p>Rapid prototype for scrollable chopstick, testing feasablity and technical path.</p>
           <div class="videojsimg">
-            <img src="/img/IMG_0809.jpeg"
+            <img src="/img/IMG_0809.jpeg">
+          </div>
+          <div class="videojs2">
+
+          </div>
+        </div>
+        <div class="siv-tip-block" data-tip="obj8">
+          <div class="tip-h-con">
+            <h1>chopstickprototype_V2</h1>
+            <label>
+              <input type="checkbox" id="keep-texture-chk-8" />
+              Keep texture visible
+            </label>
+          </div>
+          <p>Rapid prototype for scrollable chopstick, testing feasablity and technical path.</p>
+          <div class="videojsimg">
+            <img src="/img/IMG_0809.jpeg">
           </div>
           <div class="videojs2">
 
@@ -301,6 +317,7 @@ function initStuffIveBuilt(root) {
   const chk5 = tooltip.querySelector("#keep-texture-chk-5");
   const chk6 = tooltip.querySelector("#keep-texture-chk-6");
   const chk7 = tooltip.querySelector("#keep-texture-chk-7");
+  const chk8 = tooltip.querySelector("#keep-texture-chk-8");
 
   // connectors SVG
   const svgNS = "http://www.w3.org/2000/svg";
@@ -461,10 +478,19 @@ function initStuffIveBuilt(root) {
       type: "gltf",
       name: "Bibigo Chopstick",
       url: "/models/chopstickv1.glb",
-      scale: 2,
-      position: { x: -0.475, y: 1.55, z: -0.35 },
+      scale: 2.5,
+      position: { x: -0.775, y: 1.55, z: -0.35 },
       orientation: { x: 0.04, y: -0.2, z: 0 },
       tooltipClass: "obj7",
+    },
+    {
+      type: "gltf",
+      name: "Bibigo Chopstick V2",
+      url: "/models/chopstickv2.glb",
+      scale: 3,
+      position: { x: -0.25, y: 1.25, z: -0.2 },
+      orientation: { x: 0.04, y: -0.2, z: 0 },
+      tooltipClass: "obj8",
     },
     {
       type: "gltf",
@@ -545,6 +571,7 @@ function initStuffIveBuilt(root) {
     obj5: chk5,
     obj6: chk6,
     obj7: chk7,
+    obj8: chk8,
   };
 
   function showTooltipContent(tooltipKey) {
