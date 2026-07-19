@@ -1498,6 +1498,52 @@ function renderDirectoryListingLeft(files) {
 }
 
 
+  // Renders a PDF inline (page-per-canvas, scrollable) using pdf.js. Used on
+  // mobile where <embed> won't display a PDF. pdf.js is dynamically imported
+  // so its ~1MB payload only loads the first time the CV is opened.
+  async function renderPdfInline(container, src) {
+    container.innerHTML = `<div class="pdf-inline-status">Loading CV…</div>`;
+    try {
+      const pdfjsLib = await import("pdfjs-dist");
+      pdfjsLib.GlobalWorkerOptions.workerSrc = (
+        await import("pdfjs-dist/build/pdf.worker.min.mjs?url")
+      ).default;
+
+      const pdf = await pdfjsLib.getDocument(src).promise;
+      const wrap = document.createElement("div");
+      wrap.className = "pdf-inline-pages";
+
+      const cssWidth = container.clientWidth || window.innerWidth;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+      for (let p = 1; p <= pdf.numPages; p++) {
+        const page = await pdf.getPage(p);
+        const base = page.getViewport({ scale: 1 });
+        const viewport = page.getViewport({ scale: (cssWidth / base.width) * dpr });
+
+        const canvas = document.createElement("canvas");
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+        canvas.style.width = "100%";
+        canvas.style.height = "auto";
+        wrap.appendChild(canvas);
+
+        await page.render({ canvasContext: canvas.getContext("2d"), viewport }).promise;
+      }
+
+      container.innerHTML = "";
+      container.appendChild(wrap);
+    } catch (err) {
+      console.error("PDF inline render failed", err);
+      container.innerHTML = `
+        <div class="pdf-mobile-fallback">
+          <p>Couldn't preview the CV here.</p>
+          <a class="pdf-open-btn" href="${src}" target="_blank" rel="noopener">Open CV (PDF)</a>
+        </div>
+      `;
+    }
+  }
+
   function openPopup(title, section) {
   const isTextFile = /\.txt$/i.test(title);
   const isMP4File = /\.mp4$/i.test(title);
@@ -1532,20 +1578,13 @@ function renderDirectoryListingLeft(files) {
   disableAutoplayOnMobile(win);
 
   // Mobile browsers (esp. iOS Safari) won't render a PDF inside <embed>, so
-  // the CV shows up blank. Swap it for a tap-to-open link that hands the file
-  // to the browser's native full-screen PDF viewer instead.
+  // the CV shows up blank. Render it inline with pdf.js instead, keeping it
+  // inside the portfolio popup rather than opening a separate viewer.
   if (ispdfFile && IS_MOBILE) {
     const embed = win.querySelector("embed");
     const pdfSrc = embed ? embed.getAttribute("src") : "/creativecvfinalfinal.pdf";
     const body = win.querySelector(".window-body");
-    if (body) {
-      body.innerHTML = `
-        <div class="pdf-mobile-fallback">
-          <p>PDFs can't preview inline on mobile.</p>
-          <a class="pdf-open-btn" href="${pdfSrc}" target="_blank" rel="noopener">Open CV (PDF)</a>
-        </div>
-      `;
-    }
+    if (body) renderPdfInline(body, pdfSrc);
   }
 
   document.body.classList.add("modal-open");

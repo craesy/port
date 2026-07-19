@@ -1770,7 +1770,30 @@ p {
     height: 100% !important;
   }
 
-  /* mobile PDF fallback: tap-to-open card (embed can't render inline) */
+  /* mobile PDF: inline pages rendered by pdf.js, scrollable stack */
+  .window-pdf .window-body { overflow-y: auto; -webkit-overflow-scrolling: touch; }
+  .pdf-inline-pages {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: #333;
+  }
+  .pdf-inline-pages canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .pdf-inline-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 40px 20px;
+    color: #33FF33;
+    font-size: 1rem;
+  }
+
+  /* mobile PDF fallback: tap-to-open card (used only if pdf.js fails) */
   .pdf-mobile-fallback {
     display: flex;
     flex-direction: column;
