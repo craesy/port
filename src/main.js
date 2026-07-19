@@ -399,7 +399,11 @@ function initStuffIveBuilt(root) {
     objectConfigMap.set(obj, cfg);
 
     const ctr = bb.getCenter(new THREE.Vector3());
-    const geo = new THREE.BoxGeometry(sz.x * 0.8, sz.y * 0.8, sz.z * 0.8);
+    // shrink the invisible grab box toward the object slightly so neighbours
+    // don't steal clicks; objects with big hollow gaps (e.g. Smart Connect)
+    // override this to a full-size box so the hole is still draggable.
+    const hs = cfg.hitScale ?? 0.8;
+    const geo = new THREE.BoxGeometry(sz.x * hs, sz.y * hs, sz.z * hs);
     const mat = new THREE.MeshBasicMaterial({ visible: false });
     const hb = new THREE.Mesh(geo, mat);
     hb.position.copy(ctr);
@@ -471,6 +475,7 @@ function initStuffIveBuilt(root) {
       position: { x: 2.375, y: -0.35, z: 0.55 },
       orientation: { x: 0.04, y: -0.55, z: 0 },
       tooltipClass: "obj6",
+      hitScale: 1.0,   // full-size grab box so the big central hole is draggable
     },
   ];
 
