@@ -1609,7 +1609,7 @@ function renderDirectoryListingLeft(files) {
   // inside the portfolio popup rather than opening a separate viewer.
   if (ispdfFile && IS_MOBILE) {
     const embed = win.querySelector("embed");
-    const pdfSrc = embed ? embed.getAttribute("src") : "/creativecvfinalfinal.pdf";
+    const pdfSrc = embed ? embed.getAttribute("src") : "/CV_ZadeTuaima.pdf";
     const body = win.querySelector(".window-body");
     if (body) renderPdfInline(body, pdfSrc);
   }
