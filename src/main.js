@@ -1218,8 +1218,8 @@ function showTrashError() {
   };
 
   const projectsFiles = [
+    { name: "HEX Wimbledon_Action_Audio.md", sectionId: "hex-action-audio" },
     { name: "HEX Bibigo_Scroll.md", sectionId: "bibigo" },
-    { name: "HEX Action_Audio.md", sectionId: "hex-action-audio" },
     { name: "HEX Smart_Connect.md", sectionId: "hex-smart-connect" },
     { name: "HEX EDA_A-Land-Unfinished.md", sectionId: "project-wearable-xyz" },
     { name: "HEX interactive_music_video_umg.md", sectionId: "project-installation-sensors" },
