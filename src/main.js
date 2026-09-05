@@ -19,8 +19,8 @@ function updateMenuBarClock() {
   if (!timeEl) return;
 
   const now = new Date();
-  let hours12 = now.getHours() % 12;
-  if (hours12 === 0) hours12 = 12;
+  let hours12 = now.getHours() % 24;
+  if (hours12 === 0) hours12 = 24;
   const minutes = String(now.getMinutes()).padStart(2, "0");
 
   if (IS_MOBILE) {
@@ -1652,6 +1652,14 @@ function renderDirectoryListingLeft(files) {
   win.classList.add("show");
 
   attachCloseHandlers(win)
+
+  // "More on this story" links (BBC article page) navigate to the
+  // referenced project, replacing this popup.
+  win.querySelectorAll(".bbc-more-link[data-section-id]").forEach((link) => {
+    link.addEventListener("click", () => {
+      openDirectoryFileInLog(link.dataset.filename, link.dataset.sectionId);
+    });
+  });
 }
 
 

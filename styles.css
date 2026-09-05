@@ -1283,30 +1283,26 @@ p {
 }
 
 /* ================================================================
-   The Kaleidoscope 2021 / 2022 (.html popups) — early-2000s throwback
-   Scoped to .win-k22 (2021) and .win-k23 (2022) so no other window
-   is affected.
+   The Kaleidoscope 2021 (.html popup) — early-2000s throwback.
+   Scoped to .win-k22 only. .win-k23 (the 2022 BBC-article page) has
+   its own dedicated styling further down and must not inherit this.
    ================================================================ */
 
-.win-k22,
-.win-k23 {
+.win-k22 {
   border: 2px outset #d4d0c8 !important;
 }
 
-.win-k22 .window-header,
-.win-k23 .window-header {
+.win-k22 .window-header {
   background: linear-gradient(to bottom, #4a82c4, #6f9fd6) !important;
   border-bottom: 1px solid #3a6298 !important;
 }
 
-.win-k22 .window-title,
-.win-k23 .window-title {
+.win-k22 .window-title {
   color: #fff !important;
   font-weight: 600 !important;
 }
 
-.win-k22 .window-body,
-.win-k23 .window-body {
+.win-k22 .window-body {
   position: relative;
   background: #f4f1e8 !important;
   color: #2a2a2a !important;
@@ -1315,8 +1311,7 @@ p {
 }
 
 /* subtle title bar instead of a scrolling marquee */
-.win-k22 .window-body::before,
-.win-k23 .window-body::before {
+.win-k22 .window-body::before {
   display: block;
   text-align: center;
   background: #e8e3d4;
@@ -1327,33 +1322,10 @@ p {
   padding: 4px 0;
   border: 1px solid #d0c9b6;
   margin: 0 0 14px;
-}
-
-.win-k22 .window-body::before {
   content: "\2728 The Kaleidoscope 2021 \2014 est. since 2020";
 }
 
-.win-k23 .window-body::before {
-  content: "\2728 The Kaleidoscope 2022 \2014 est. since 2020";
-}
-
-/* understated retro hit counter at the bottom */
-/* .win-k22 .window-body::after,
-.win-k23 .window-body::after {
-  content: "\1F441 visitors: 001337";
-  display: inline-block;
-  margin-top: 14px;
-  background: #2a2a2a;
-  color: #8fd98f;
-  font-family: "Courier New", monospace;
-  font-size: 0.75rem;
-  letter-spacing: 2px;
-  padding: 4px 9px;
-  border: 1px inset #888;
-} */
-
-.win-k22 .window-body h1,
-.win-k23 .window-body h1 {
+.win-k22 .window-body h1 {
   font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive, sans-serif !important;
   font-size: 2.1rem !important;
   text-align: center;
@@ -1362,13 +1334,11 @@ p {
   text-shadow: 1px 1px 0 #fff, 2px 2px 0 rgba(0, 0, 0, 0.12);
 }
 
-.win-k22 .window-body h1::after,
-.win-k23 .window-body h1::after {
+.win-k22 .window-body h1::after {
   content: none !important;
 }
 
-.win-k22 .window-body h3,
-.win-k23 .window-body h3 {
+.win-k22 .window-body h3 {
   font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive, sans-serif !important;
   color: #2a6b6b !important;
   border-bottom: 1px dashed #b39ddb;
@@ -1376,13 +1346,11 @@ p {
   padding-bottom: 2px;
 }
 
-.win-k22 .window-body h3::after,
-.win-k23 .window-body h3::after {
+.win-k22 .window-body h3::after {
   content: none !important;
 }
 
-.win-k22 .window-body p,
-.win-k23 .window-body p {
+.win-k22 .window-body p {
   background: #fffdf5 !important;
   color: #2a2a2a !important;
   border: 1px solid #ddd6c4;
@@ -1393,8 +1361,7 @@ p {
   line-height: 1.55;
 }
 
-.win-k22 .window-body li,
-.win-k23 .window-body li {
+.win-k22 .window-body li {
   color: #2a2a2a;
   list-style: none;
   margin: 0 0 4px 0;
@@ -1402,8 +1369,7 @@ p {
   border-left: 3px solid #b39ddb;
 }
 
-.win-k22 .window-body li::before,
-.win-k23 .window-body li::before {
+.win-k22 .window-body li::before {
   content: "\2605 ";
   color: #c9a66b;
 }
@@ -1414,14 +1380,7 @@ p {
 .win-k22 .boilerroom-img-1 video,
 .win-k22 .boilerroom-img-2 video,
 .win-k22 .boilerroom-img-3 video,
-.win-k22 .boilerroom-img-2 div[style*="position:relative"],
-.win-k23 .boilerroom-img-1 img,
-.win-k23 .boilerroom-img-2 img,
-.win-k23 .boilerroom-img-3 img,
-.win-k23 .boilerroom-img-1 video,
-.win-k23 .boilerroom-img-2 video,
-.win-k23 .boilerroom-img-3 video,
-.win-k23 .boilerroom-img-2 div[style*="position:relative"] {
+.win-k22 .boilerroom-img-2 div[style*="position:relative"] {
   border: 4px solid #fff;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
 }
@@ -1919,6 +1878,12 @@ p {
   color: #3c4043;
 }
 
+.bbc-lock {
+  font-size: 0.75rem;
+  line-height: 1;
+  flex: 0 0 auto;
+}
+
 .bbc-url {
   flex: 1;
   background: #fff;
@@ -1935,8 +1900,16 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #000;
+  background: #B80000;
   padding: 12px 18px;
+  gap: 12px;
+}
+
+.bbc-burger {
+  color: #fff;
+  font-size: 1.1rem;
+  line-height: 1;
+  flex: 0 0 auto;
 }
 
 .bbc-logo {
@@ -1957,17 +1930,28 @@ p {
   font-size: 0.8rem;
 }
 
-.bbc-news-word {
-  color: #fff;
-  font-weight: 700;
-  font-size: 0.95rem;
-  letter-spacing: 0.12em;
-  margin-left: 10px;
+.bbc-mast-auth {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 0 0 auto;
 }
 
-.bbc-signin {
+.bbc-btn-register {
   color: #fff;
-  font-size: 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.bbc-btn-signin {
+  background: #bb1919;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 3px;
+  white-space: nowrap;
 }
 
 /* section nav */
@@ -2018,14 +2002,18 @@ p {
   content: none;
 }
 
-/* byline */
+/* dateline + byline */
+.bbc-dateline {
+  font-size: 0.75rem;
+  color: #5a5a5a;
+  margin-bottom: 10px;
+}
+
 .bbc-byline {
   display: flex;
   flex-direction: column;
   gap: 2px;
-  border-bottom: 1px solid #e6e6e6;
-  padding-bottom: 12px;
-  margin-bottom: 18px;
+  margin-bottom: 12px;
 }
 
 .bbc-byline-name {
@@ -2039,10 +2027,28 @@ p {
   color: #5a5a5a;
 }
 
-.bbc-timestamp {
-  font-size: 0.72rem;
-  color: #5a5a5a;
-  margin-top: 4px;
+/* share / save row */
+.bbc-actions {
+  display: flex;
+  gap: 10px;
+  border-top: 1px solid #e6e6e6;
+  border-bottom: 1px solid #e6e6e6;
+  padding: 10px 0;
+  margin-bottom: 18px;
+}
+
+.bbc-action-btn {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #141414;
+  padding: 5px 12px;
+  border: 1px solid #d5d5d5;
+  border-radius: 3px;
+  cursor: default;
+}
+
+.bbc-action-btn:hover {
+  border-color: #141414;
 }
 
 /* body copy */
@@ -2137,6 +2143,16 @@ p {
   margin-bottom: 1px;
 }
 
+.win-k23 .window-body .article-link {
+  margin: 4px 0 26px;
+}
+
+.win-k23 .window-body .article-link .bibigo-link {
+  color: #1380a1;
+  border-bottom-color: #1380a1;
+  font-size: 0.85rem;
+}
+
 /* related topics + more on this story */
 .win-k23 .window-body h2.bbc-section-head {
   font-family: Helvetica, Arial, sans-serif;
@@ -2227,7 +2243,7 @@ p {
 .bibigo-hero img, .bibigo-hero video, .bibigo-pair img, .bibigo-pair video, .bibigo-full video { width: 100%; height: 100%; object-fit: contain; display: block; }
 .bibigo-caption { font-size: 11px; color: #9a968c; text-align: right; }
 
-.bibigo-link { display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: 0.02em; color: #c9683a; text-decoration: none; border-bottom: 1px solid #c9683a; padding-bottom: 2px; margin-top: 8px; }
+.bibigo-link { display: inline-block; font-size: 20px; font-weight: 600; letter-spacing: 0.02em; color: #c9683a; text-decoration: none; border-bottom: 1px solid #c9683a; padding-bottom: 2px; margin-top: 8px; }
 .bibigo-full img { width: 100%; height: 100%; object-fit: contain; display: block; }
 
 /* Action Audio hero/full videos: fill the width edge-to-edge and let height
