@@ -877,8 +877,16 @@ p {
 }
 
 .macos-time {
-  font-size: 11px;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
   opacity: 0.9;
+  white-space: nowrap;
+}
+
+.macos-time-con {
+  font-size: 13px;
+  opacity: 0.9;
+  white-space: nowrap;
 }
 
 /* MP4 window layout */
@@ -1445,6 +1453,15 @@ p {
 
   /* menu bar */
   .macos-bar { height: 30px; font-size: 0.85rem; padding: 0 12px; }
+
+  /* iOS-style status bar clock: bold, no date, no seconds/AM-PM */
+  .macos-time-con { display: none; }
+  .macos-time {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    opacity: 1;
+  }
 
   /* ============ iOS home screen (springboard) ============ */
 

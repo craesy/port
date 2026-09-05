@@ -10,6 +10,36 @@ const IS_MOBILE =
   window.matchMedia("(max-width: 768px)").matches ||
   window.matchMedia("(hover: none) and (pointer: coarse)").matches;
 
+/* ===================== menu bar clock =====================
+   Desktop: classic macOS menu-bar clock — "Fri 5 Sep" + "4:32:07 PM".
+   Mobile: iOS status-bar clock — just "9:41", bold, no seconds, no AM/PM. */
+function updateMenuBarClock() {
+  const dateEl = document.querySelector(".macos-time-con");
+  const timeEl = document.querySelector(".macos-time");
+  if (!timeEl) return;
+
+  const now = new Date();
+  let hours12 = now.getHours() % 12;
+  if (hours12 === 0) hours12 = 12;
+  const minutes = String(now.getMinutes()).padStart(2, "0");
+
+  if (IS_MOBILE) {
+    if (dateEl) dateEl.textContent = "";
+    timeEl.textContent = `${hours12}:${minutes}`;
+  } else {
+    if (dateEl) {
+      const weekday = now.toLocaleDateString("en-US", { weekday: "short" });
+      const month = now.toLocaleDateString("en-US", { month: "short" });
+      dateEl.textContent = `${weekday} ${now.getDate()} ${month}`;
+    }
+    const seconds = String(now.getSeconds()).padStart(2, "0");
+    const ampm = now.getHours() >= 12 ? "PM" : "AM";
+    timeEl.textContent = `${hours12}:${minutes}:${seconds} ${ampm}`;
+  }
+}
+updateMenuBarClock();
+setInterval(updateMenuBarClock, 1000);
+
 // Videos are marked autoplay for desktop hover previews; on mobile that
 // means every popup blasts sound/motion the moment it opens, so strip it.
 // Only touch videos that have their own controls — a few decorative clips
