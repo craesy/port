@@ -2214,11 +2214,18 @@ p {
   .bbc-article {
     padding: 18px 14px 26px;
   }
+  .bbc-img-row {
+    flex-wrap: wrap;
+  }
   .bbc-img-row img {
-    height: 96px;
+    height: 140px;
+    flex: 1 1 calc(50% - 2px);
+  }
+  .bbc-img-row img:nth-child(3):last-child {
+    flex-basis: 100%;
   }
   .bbc-img-row-wide img {
-    height: 130px;
+    height: 160px;
   }
   .win-k23 .window-body h1.bbc-headline {
     font-size: 1.35rem;
